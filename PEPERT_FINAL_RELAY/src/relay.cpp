@@ -1,9 +1,9 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 
-const char* ssid = "Xiaomi11T"; 
-const char* password = "12345678"; 
-const char* mqtt_server = "10.213.20.241";  
+const char* ssid = "Cloud Control Network";          
+const char* password = "ccv7network";   
+const char* mqtt_server = "10.10.10.111";
 
 #define RELAY_PIN 13
 const char* topic_subscribe = "RFID_LOGIN"; 
