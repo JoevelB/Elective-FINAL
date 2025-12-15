@@ -6,12 +6,12 @@ const char* password = "12345678";
 const char* mqtt_server = "10.213.20.241";  
 
 #define RELAY_PIN 13
-const char* topic_subscribe = "RFID_LOGIN"; // Listen to the public output channel
+const char* topic_subscribe = "RFID_LOGIN"; 
 
 WiFiClient espClient;
 PubSubClient client(espClient);
 
-// Function Prototypes (The compiler needs these)
+
 void setup_wifi();
 void reconnect();
 void callback(char* topic, byte* message, unsigned int length); 
@@ -40,7 +40,6 @@ msg += (char)message[i];
  Serial.print("Received: ");
  Serial.println(msg);
 
- // --- PARSE "UID,STATUS" ---
  int commaIndex = msg.indexOf(',');
  
  if (commaIndex != -1) {

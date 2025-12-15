@@ -3,12 +3,11 @@
 #include <SPI.h>
 #include <MFRC522.h>
 
-// --- CONFIGURATION ---
-const char* ssid = "Xiaomi11T";          // YOUR WIFI NAME
-const char* password = "12345678";    // YOUR WIFI PASSWORD
-const char* mqtt_server = "10.213.20.241";     // YOUR LAPTOP IP
+const char* ssid = "Xiaomi11T";          
+const char* password = "12345678";    
+const char* mqtt_server = "10.213.20.241";     
 
-// --- PINS ---
+
 #define SS_PIN  32
 #define RST_PIN 27
 
@@ -18,7 +17,7 @@ WiFiClient espClient;
 PubSubClient client(espClient);
 MFRC522 rfid(SS_PIN, RST_PIN);
 
-// Function Prototypes (for the compiler)
+
 void setup_wifi();
 void reconnect();
 void callback(char* topic, byte* message, unsigned int length); 
@@ -52,7 +51,7 @@ void setup_wifi() {
   Serial.println(" Connected!");
 }
 
-// --- MESSAGE HANDLER (Scanner receives its status reply) ---
+
 void callback(char* topic, byte* message, unsigned int length) {
   String responseMsg = "";
   for (int i = 0; i < length; i++) {
@@ -92,7 +91,6 @@ void loop() {
   if (!client.connected()) reconnect();
   client.loop(); 
 
-  // --- SCANNER LOGIC ---
   if (!rfid.PICC_IsNewCardPresent()) return;
   if (!rfid.PICC_ReadCardSerial()) return;
 
